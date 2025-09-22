@@ -1,0 +1,64 @@
+/* Element Selector - applies to all h2 tags */
+h2 {
+    color: darkblue;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* ID Selector - applies only to the h3 with this ID */
+#special-h3 {
+    color: green;
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+/* Class Selector - applies to any element with class "highlight" */
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Element Selector - horizontal rule */
+hr {
+    border: 2px solid red;
+    margin: 20px 0;
+}
+
+/* Descendant Selector - affects <p> inside a div */
+div p {
+    font-size: 18px;
+    color: purple;
+}
+
+/* Child Selector - only immediate span inside div */
+div > span {
+    color: orange;
+    font-style: italic;
+}
+
+/* Attribute Selector - style <time> tag with datetime attribute */
+time[datetime] {
+    color: teal;
+    font-weight: bold;
+}
+
+/* Pseudo-class - style link states */
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+a:visited {
+    color: darkviolet;
+}
+
+/* Universal Selector - reset margin for all images */
+img {
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 200px; /* example */
+    height: auto;
+}
