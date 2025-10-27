@@ -1,0 +1,116 @@
+<!-- Develop the HTML page named as “Table.html” to display your class time table.
+
+a) Provide the title as Time Table with table header and table footer, row-span and col-span etc.
+b) Provide various colour options to the cells (Highlight the lab hours and elective hours with different colours.)
+c) Provide colour options for rows. -->
+
+<!DOCTYPE html>
+<head>
+    <title>Time Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #F4F4F4;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:nth-child(odd) {
+            background-color: #e6f7ff;
+        }
+        .lab-hour {
+            background-color: #ffcccc;
+        }
+        .break {
+            font-weight: bold;
+            background-color: #ccffcc;
+        }
+        tfoot {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Time Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Day/Time</th>
+                <th>8:30AM - 9:25AM</th>
+                <th>9:25AM - 10:20AM</th>
+                <th>10:20AM - 10:35AM</th>
+                <th>10:35AM - 11:30AM</th>
+                <th>11:30AM - 12:25PM</th>
+                <th>12:25PM - 1:15PM</th>
+                <th>1:15PM - 2:10PM</th>
+                <th>2:10PM - 3:05PM</th>
+                <th>3:05PM - 4:00PM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monday</td>
+                <td>TOC</td>
+                <td>CN</td>
+                <td rowspan="5" class="break">Short Break</td>
+                <td>TOC</td>
+                <td>USP</td>
+                <td rowspan="5" class="break">Lunch Break</td>
+                <td colspan="2" class="lab-hour">CN Lab</td>
+                <td>Tutorial</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>USP</td>
+                <td>RM-IPR</td>
+                <td colspan="2" class="lab-hour">WT Lab</td>
+                <td>SE</td>
+                <td>EVS</td>
+                <td>TOC</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>SE</td>
+                <td>TOC</td>
+                <td>USP</td>
+                <td>RM-IPR</td>
+                <td colspan="3">Library</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>CN</td>
+                <td>SE</td>
+                <td>USP</td>
+                <td>CN</td>
+                <td colspan="2" class="lab-hour">MP Lab</td>
+                <td>Tutorial</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td colspan="2" class="lab-hour">MP Lab</td>
+                <td>CN</td>
+                <td>SE</td>
+                <td colspan="3">NSS/Sports/Yoga</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="10">End of Time Table</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
