@@ -8,6 +8,7 @@ d) Create hash from string using crypto.createHash() method. -->
 <!DOCTYPE html>
 <head>
   <title>JavaScript JSON & Crypto Operations</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -103,7 +104,7 @@ d) Create hash from string using crypto.createHash() method. -->
     <h2>d) Create Hash from String</h2>
     <input type="text" id="hashInput" placeholder="Enter text to hash">
     <button onclick="createHash()">Generate SHA-256 Hash</button>
-    <pre id="hashResult"></pre>
+    <pre id="hashOutput"></pre>
   </section>
 
   <script>
@@ -165,19 +166,21 @@ d) Create hash from string using crypto.createHash() method. -->
       }
     }
 
-    // (d) Create Hash (browser-friendly version using Web Crypto API)
-    async function createHash() {
-      const input = document.getElementById('hashInput').value;
-      if (!input) {
-        document.getElementById('hashResult').textContent = "Please enter a string!";
-        return;
+    // (d) Create Hash from string using crypto.createHash() method
+    function createHash() {
+      const hashInput = document.getElementById('hashInput').value.trim();
+      if (hashInput.length > 0) {
+        const hash = CryptoJS.SHA256(hashInput).toString();
+        showResult('hashOutput', hash, true);
+      } else {
+        showResult('hashOutput', 'Input cannot be empty', false);
       }
-      const encoder = new TextEncoder();
-      const data = encoder.encode(input);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-      document.getElementById('hashResult').textContent = "SHA-256 Hash:\n" + hashHex;
+    }
+
+    function showResult(id, message, isSuccess) {
+      const element = document.getElementById(id);
+      element.textContent = message;
+      element.style.color = isSuccess ? '#00d4ff' : '#ff6b6b';
     }
   </script>
 
