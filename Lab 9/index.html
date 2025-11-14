@@ -1,0 +1,123 @@
+<!--
+    Develop jQuery script (with HTML/CSS) for: 
+    a) Appends the content at the end of the existing paragraph and list.
+    b) Change the state of the element with CSS style using animate() method.
+    c) Change the color of any div that is animated.
+-->
+
+<!DOCTYPE html>
+<head>
+    <title>jQuery Tasks</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #0066cc;
+            text-align: center;
+        }
+
+        #contentBox {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            width: 70%;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        }
+
+        #animateBox {
+            width: 120px;
+            height: 120px;
+            background: #4CAF50;
+            border-radius: 10px;
+            margin: 25px auto;
+            position: relative;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #0066cc;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #004c99;
+        }
+    </style>
+</head>
+<body>
+
+<h2>jQuery Script Demonstration</h2>
+
+<div id="contentBox">
+    <h3>a) Append Content</h3>
+
+    <p id="textPara">This is an existing paragraph.</p>
+
+    <ul id="textList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <button id="appendBtn">Append Text</button>
+</div>
+
+
+<div id="contentBox">
+    <h3>b) Animate Element</h3>
+
+    <div id="animateBox"></div>
+
+    <button id="animateBtn">Animate Box</button>
+</div>
+
+<script>
+
+$(document).ready(function() {
+
+    // (a) APPEND CONTENT
+    $("#appendBtn").click(function() {
+        $("#textPara").append(" <b>→ Appended text added!</b>");
+        $("#textList").append("<li>New Appended Item</li>");
+    });
+
+
+    // (b) ANIMATE ELEMENT
+    $("#animateBtn").click(function() {
+
+        // (c) Change color of animated div
+        $("#animateBox").css("background", "#ff5722");
+
+        $("#animateBox").animate({
+            left: '200px',
+            width: '180px',
+            height: '180px',
+            opacity: 0.6
+        }, 1000).animate({
+            left: '0px',
+            width: '120px',
+            height: '120px',
+            opacity: 1
+        }, 1000, function() {
+            $("#animateBox").css("background", "#4CAF50");
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>
