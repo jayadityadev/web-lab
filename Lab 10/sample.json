@@ -1,0 +1,21 @@
+{
+	"name": "Aditi Sharma",
+	"age": 20,
+	"city": "Mumbai",
+	"course": "BSc Computer Science",
+	"semester": 5,
+	"hobbies": ["coding", "music", "photography"],
+	"address": {
+		"street": "MG Road",
+		"zip": "400001"
+	},
+	"contacts": [
+		{ "type": "email", "value": "aditi@example.com" },
+		{ "type": "phone", "value": "+91-9876543210" }
+	],
+	"grades": {
+		"web-lab": 88,
+		"math": 92
+	},
+	"notes": "Sample data for AJAX lab getJSON and parsing examples."
+}

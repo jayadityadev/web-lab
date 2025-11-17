@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <title>AJAX Examples</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body { font-family: Arial; background: #f4f4f9; margin: 0; }
+        h1 { text-align: center; color: #333; padding: 20px; }
+        #content { max-width: 600px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px #0002; text-align: center; }
+        button { margin: 8px; padding: 10px 15px; border: none; border-radius: 5px; background: #007BFF; color: #fff; cursor: pointer; transition: box-shadow .3s; }
+        button:hover, button:focus { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #007bff; }
+        #output { display: none; margin-top: 20px; padding: 12px; border-radius: 6px; white-space: pre-wrap; text-align: left; max-height: 300px; overflow-y: auto; }
+        .plain { background: #f0f8ff; border: 1px solid #b0c4de; }
+        .jquery { background: #f5fffa; border: 1px solid #98fb98; }
+        .getjson { background: #fffaf0; border: 1px solid #ffd700; }
+        .parse { background: #fff0f5; border: 1px solid #ff69b4; }
+    </style>
+</head>
+<body>
+    <h1>AJAX Examples</h1>
+    <div id="content">
+        <button data-type="plain">Load Text (Plain AJAX)</button>
+        <button data-type="jquery">Load Text (jQuery AJAX)</button>
+        <button data-type="getjson">Load JSON (getJSON)</button>
+        <button data-type="parse">Parse JSON (getJSON + Parse)</button>
+        <div id="output"></div>
+    </div>
+    <script>
+        const output = $('#output');
+        function show(type, data) { output.removeClass().addClass(type).text(data).show(); }
+        $('button').click(function() {
+            const type = $(this).data('type');
+            if (type === 'plain') {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'sample.txt', true);
+                xhr.onload = () => show('plain', xhr.status === 200 ? xhr.responseText : 'Error loading text file.');
+                xhr.send();
+            } else if (type === 'jquery') {
+                $.ajax('sample.txt').done(d => show('jquery', d)).fail(() => show('jquery', 'Error loading text file.'));
+            } else if (type === 'getjson') {
+                $.getJSON('sample.json').done(d => show('getjson', JSON.stringify(d, null, 2))).fail(() => show('getjson', 'Error loading JSON file.'));
+            } else if (type === 'parse') {
+                $.get('sample.json').done(data => {
+                    let json = typeof data === 'string' ? JSON.parse(data) : data;
+                    show('parse', `Name: ${json.name}\nAge: ${json.age}\nCity: ${json.city}`);
+                }).fail(() => show('parse', 'Error loading JSON file.'));
+            }
+        });
+    </script>
+</body>
+</html>
