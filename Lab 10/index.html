@@ -1,3 +1,9 @@
+<!-- 10 Develop a JavaScript program with Ajax (with HTML/CSS) for:
+a) Use ajax() method (without Jquery) to add the text content from the text file by sending ajax request.
+b) Use ajax() method (with Jquery) to add the text content from the text file by sending ajax request.
+c) Illustrate the use of getJSON() method in jQuery.
+d) Illustrate the use of parseJSON() method to display JSON values. -->
+
 <!DOCTYPE html>
 <head>
     <title>AJAX Examples</title>
@@ -21,7 +27,7 @@
         <button data-type="plain">Load Text (Plain AJAX)</button>
         <button data-type="jquery">Load Text (jQuery AJAX)</button>
         <button data-type="getjson">Load JSON (getJSON)</button>
-        <button data-type="parse">Parse JSON (getJSON + Parse)</button>
+        <button data-type="parse">Parse JSON (get + Parse)</button>
         <div id="output"></div>
     </div>
     <script>
@@ -39,12 +45,12 @@
             } else if (type === 'getjson') {
                 $.getJSON('sample.json').done(d => show('getjson', JSON.stringify(d, null, 2))).fail(() => show('getjson', 'Error loading JSON file.'));
             } else if (type === 'parse') {
-                $.get('sample.json').done(data => {
-                    let json = typeof data === 'string' ? JSON.parse(data) : data;
+                $.get('sample.json').done(d => {
+                    let json = typeof d === 'string' ? JSON.parse(d) : d;
                     show('parse', `Name: ${json.name}\nAge: ${json.age}\nCity: ${json.city}`);
                 }).fail(() => show('parse', 'Error loading JSON file.'));
             }
         });
     </script>
 </body>
-</html>
+</html> 
